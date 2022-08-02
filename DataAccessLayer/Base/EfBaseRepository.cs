@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,36 +8,51 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Base
 {
-    public class EfBaseRepository<T, TDbContext> : IEfBaseRepository<T> where T : class
+    public class EfBaseRepository<T, TDbContext> : IEfBaseRepository<T> 
+        where T : class
+        where TDbContext:DbContext
     {
+        protected readonly TDbContext _dbContext;
+
+        public EfBaseRepository(TDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         public T Add(T entity)
         {
-            throw new NotImplementedException();
+            return _dbContext.Add(entity).Entity;
         }
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            _dbContext.Remove(entity);
         }
 
         public T Get(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return _dbContext.Set<T>().FirstOrDefault(predicate);
         }
 
         public IEnumerable<T> GetAll(Expression<Func<T, bool>> predicate = null)
         {
-            throw new NotImplementedException();
+            if(predicate == null)
+                return _dbContext.Set<T>().ToList();
+            else
+            {
+                return _dbContext.Set<T>().Where(predicate);
+            }
         }
 
         public void SaveChages()
         {
-            throw new NotImplementedException();
+            _dbContext.SaveChanges();
         }
 
         public T Update(T entity)
         {
-            throw new NotImplementedException();
+            _dbContext.Update(entity);
+            return entity;
         }
     }
 }

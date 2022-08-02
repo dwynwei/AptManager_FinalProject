@@ -1,4 +1,5 @@
 using DataAccessLayer.DbContexts;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddAuthorization();
-builder.Services.AddDbContext<AptManagerDbContext>(ServiceLifetime.Transient);
-
+builder.Services.AddDbContext<AptManagerDbContext>(x=>x.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings:MsSql").Value));
 
 var app = builder.Build();
 

@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IUserRepository:IEfBaseRepository<User>
+    public interface IBuildingRepository:IEfBaseRepository<Building>
     {
-        User GetUserWithPassword(string email); 
     }
 }

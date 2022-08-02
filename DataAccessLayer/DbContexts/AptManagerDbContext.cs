@@ -12,20 +12,19 @@ namespace DataAccessLayer.DbContexts
 {
     public class AptManagerDbContext:DbContext
     {
-        private IConfiguration _configuration;
-
-        public AptManagerDbContext(IConfiguration configuration)
+        public AptManagerDbContext(DbContextOptions options) : base(options)
         {
-            _configuration = configuration;
+
         }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Building> Buildings { get; set; }
-        public DbSet<UserPassword> Passwords { get; set; }
+        public virtual DbSet<User> Users { get; set; } = default!;
+        public virtual DbSet<Building> Buildings { get; set; } = default!;
+        public virtual DbSet<UserPassword> Passwords { get; set; } = default!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder builder)
-        {
-            base.OnConfiguring(builder.UseSqlServer(@"Server=DESKTOP-G0BEQN4\SQLEXPRESS;Database=AptManager;Trusted_Connection=True;"));
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder builder)
+        //{
+        //    var connectionString = _configuration.GetConnectionString("MsSql");
+        //    base.OnConfiguring(builder.UseSqlServer(connectionString));
+        //}
     }
 }
