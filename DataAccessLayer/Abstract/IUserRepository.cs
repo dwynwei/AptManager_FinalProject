@@ -10,6 +10,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IUserRepository:IEfBaseRepository<User>
     {
-        User GetUserWithPassword(string email); 
+        User GetUserWithPassword(string nationalityId); 
     }
 }

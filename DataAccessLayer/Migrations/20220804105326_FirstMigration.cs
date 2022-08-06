@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccessLayer.Migrations
 {
-    public partial class firstMigration : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,7 +20,7 @@ namespace DataAccessLayer.Migrations
                     NationalityId = table.Column<string>(type: "nvarchar(11)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(15)", nullable: false),
-                    CarPlateId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CarPlateId = table.Column<string>(type: "nvarchar(12)", nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -35,9 +35,9 @@ namespace DataAccessLayer.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsSettled = table.Column<bool>(type: "bit", nullable: false),
-                    HomeType = table.Column<string>(type: "nvarchar(4)", nullable: false),
-                    Floor = table.Column<string>(type: "nvarchar(3)", nullable: false),
-                    DoorNumber = table.Column<string>(type: "nvarchar(10)", nullable: false),
+                    HomeType = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    Floor = table.Column<string>(type: "nvarchar(4)", nullable: false),
+                    DoorNumber = table.Column<string>(type: "nvarchar(4)", nullable: false),
                     HomeOwnerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

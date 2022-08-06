@@ -17,9 +17,9 @@ namespace DataAccessLayer.Concrete
         {
         }
 
-        public User GetUserWithPassword(string email)
+        public User GetUserWithPassword(string nationalityId)
         {
-            return _dbContext.Users.Include(x=>x.Password).FirstOrDefault(x=>x.Email == email);
+            return _dbContext.Users.Include(x=>x.Password).FirstOrDefault(x=>x.NationalityId == nationalityId);
         }
     }
 }

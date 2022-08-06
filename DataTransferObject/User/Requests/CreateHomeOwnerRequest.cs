@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataTransferObject.User
 {
-    public class UpdateUserRequest
+    public class CreateHomeOwnerRequest
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string NationalityId { get; set; }

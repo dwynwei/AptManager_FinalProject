@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataTransferObject.User
+namespace DataTransferObject.User.Requests
 {
-    public class CreateUserRequest
+    public class DeleteUserRequest
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string NationalityId { get; set; }
