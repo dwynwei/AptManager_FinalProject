@@ -10,7 +10,7 @@ namespace BusinessLayer.Abstract
 {
     public interface IAuthService
     {
-        CommandResponse VerifyPassword(string email, string password);
+        CommandResponse VerifyPassword(string nationalityId, string password);
         AccessToken Login(string nationalityId, string password);
     }
 }

@@ -13,8 +13,8 @@ namespace BusinessLayer.Abstract
     public interface IUserService
     {
         public IEnumerable<SearchUserRequest> getAllUserInfo();
-        public CommandResponse InsertUserInfo (SearchUserRequest request);
-        public CommandResponse UpdateUserInfo (SearchUserRequest request);
-        public void DeleteUserInfo (User user);
+        public CommandResponse InsertUserInfo (CreateHomeOwnerRequest request);
+        public CommandResponse UpdateUserInfo (UpdateHomeOwnerRequest request);
+        public CommandResponse DeleteUserInfo (User user);
     }
 }
