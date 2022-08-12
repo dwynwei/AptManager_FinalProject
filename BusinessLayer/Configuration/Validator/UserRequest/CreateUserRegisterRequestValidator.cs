@@ -8,10 +8,14 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Configuration.Validator.UserRequest
 {
-    public class CreateUserRegisterValidator : AbstractValidator<CreateUserRegisterRequest>
+    public class CreateUserRegisterRequestValidator : AbstractValidator<CreateUserRegisterRequest>
     {
-        public CreateUserRegisterValidator()
+        public CreateUserRegisterRequestValidator()
         {
+            RuleFor(x => x.Name).NotEmpty().WithMessage("İsim Alanı Boş Olamaz");
+
+            RuleFor(x => x.LastName).NotEmpty().WithMessage("Soy İsim Alanı Boş Olamaz");
+
             RuleFor(x => x.NationalityId).NotEmpty().WithMessage("Kimlik Numarası Alanı Boş Bırakılamaz.");
             RuleFor(x => x.NationalityId).Matches("^[1-9]{1}[0-9]{9}[02468]{1}$").WithMessage("Girilen Kimlik Numarası Şablonu Doğru Değil!");
 

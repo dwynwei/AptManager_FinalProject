@@ -1,7 +1,15 @@
-﻿using BusinessLayer.Abstract;
+﻿using AutoMapper;
+using BusinessLayer.Abstract;
+using BusinessLayer.Configuration.Validator.CreditCardRequest;
 using DataAccessLayer.Abstract;
+using DataTransferObject.CreditCard;
+using BusinessLayer.Configuration.Exception;
+using FluentValidation;
+using Microsoft.Extensions.Options;
 using Models.Entities;
+using Models.MongoEntites;
 using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,43 +18,48 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class CreditCardService : ICreditCardService
+    public class CreditCardService
     {
-        private readonly ICreditCardRepository _creditCardRepository;
+        private readonly IMongoCollection<CreditCard> _mongoCollection;
+        private readonly IMapper _mapper;
 
-        public CreditCardService(ICreditCardRepository creditCardRepository)
+        public CreditCardService(IOptions<MongoSettings> options, IMapper mapper)
         {
-            _creditCardRepository = creditCardRepository;
+            var mongoClient = new MongoClient(options.Value.ConnectionString);
+
+            _mongoCollection = mongoClient.GetDatabase(options.Value.DatabaseName)
+                .GetCollection<CreditCard>(options.Value.CollectionName);
+            _mapper = mapper;
         }
 
-        public void Add(CreditCard model)
+        public async Task<List<CreditCard>> Get()
         {
-            _creditCardRepository.Add(model);
+            return await _mongoCollection.Find(x => true).ToListAsync();
         }
 
-        public void Delete(ObjectId id)
+        public async Task<CreditCard> GetbyId(string id)
         {
-            _creditCardRepository.Delete(id);
+            return await _mongoCollection.Find(x => x.Id == new ObjectId(id)).FirstOrDefaultAsync();
         }
 
-        public CreditCard Get(ObjectId id)
+        public async Task Create(CreateCreditCardRequest card)
         {
-            return _creditCardRepository.Get(x=>x.Id == id);
+            var validator = new CreateCreditCardRequestValidator();
+            validator.Validate(card).ThrowIfException();
+
+            var entity = _mapper.Map<CreditCard>(card);
+
+            await _mongoCollection.InsertOneAsync(entity);
         }
 
-        public IEnumerable<CreditCard> GetAll()
+        public async Task Update(string id, CreditCard card)
         {
-            return _creditCardRepository.GetAll();
+            await _mongoCollection.ReplaceOneAsync(x => x.Id == new ObjectId(id), card);
         }
 
-        public CreditCard GetById(ObjectId id)
+        public async Task Delete(string id)
         {
-            return null;
-        }
-
-        public void Update(CreditCard model)
-        {
-            _creditCardRepository.Update(model);
+            await _mongoCollection.DeleteOneAsync(x=>x.Id == new ObjectId(id));
         }
     }
 }

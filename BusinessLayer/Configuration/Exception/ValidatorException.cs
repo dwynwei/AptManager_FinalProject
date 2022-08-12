@@ -15,7 +15,7 @@ namespace BusinessLayer.Configuration.Exception
                 return;
 
             var message = string.Join(',', validationResult.Errors.Select(x => x.ErrorMessage));
-            throw new ValidationException(message);
+            throw new ValidationException(message); 
         }
     }
 }

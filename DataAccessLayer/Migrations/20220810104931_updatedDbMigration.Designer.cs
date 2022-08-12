@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(AptManagerDbContext))]
-    [Migration("20220804105326_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20220810104931_updatedDbMigration")]
+    partial class updatedDbMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

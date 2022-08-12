@@ -13,7 +13,7 @@ namespace BusinessLayer.Abstract
     {
         public IEnumerable<SearchBuildingInformationRequest> GetAllBuildingInfo();
         public CommandResponse InsertBuildingInfo(CreateBuildingInformationRequest buildingReq);
-        public CommandResponse UpdateBuildingInfo(CreateBuildingInformationRequest buildingReq);
-        public void DeleteBuildingInfo(Building building);
+        public CommandResponse UpdateBuildingInfo(UpdateBuildingInformationRequest buildingReq);
+        public CommandResponse DeleteBuildingInfo(Building building);
     }
 }

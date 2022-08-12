@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccessLayer.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class updatedDbMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,12 +15,12 @@ namespace DataAccessLayer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    NationalityId = table.Column<string>(type: "nvarchar(11)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(15)", nullable: false),
-                    CarPlateId = table.Column<string>(type: "nvarchar(12)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NationalityId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CarPlateId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Role = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -35,10 +35,10 @@ namespace DataAccessLayer.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsSettled = table.Column<bool>(type: "bit", nullable: false),
-                    HomeType = table.Column<string>(type: "nvarchar(5)", nullable: false),
-                    Floor = table.Column<string>(type: "nvarchar(4)", nullable: false),
-                    DoorNumber = table.Column<string>(type: "nvarchar(4)", nullable: false),
-                    HomeOwnerId = table.Column<int>(type: "int", nullable: false)
+                    HomeType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Floor = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DoorNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HomeOwnerId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

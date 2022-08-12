@@ -1,11 +1,15 @@
 ﻿using AutoMapper;
 using BusinessLayer.Abstract;
+using BusinessLayer.Configuration.Auth;
 using BusinessLayer.Configuration.CommandResponse;
+using BusinessLayer.Configuration.Exception;
 using BusinessLayer.Configuration.Validator.UserRequest;
 using DataAccessLayer.Abstract;
 using DataTransferObject.User;
+using DataTransferObject.User.Requests;
 using FluentValidation;
 using Models;
+using Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +49,7 @@ namespace BusinessLayer.Concrete
         public CommandResponse InsertUserInfo(CreateHomeOwnerRequest request)
         {
             var validator = new CreateHomeOwnerRequestValidator();
-            validator.Validate(request);
+            validator.Validate(request).ThrowIfException();
             
             var entity = _mapper.Map<User>(request);
             _userRepository.Add(entity);
@@ -83,6 +87,31 @@ namespace BusinessLayer.Concrete
                 Status = true,
                 Message = "Kullanıcı Başarılı Bir Şekilde Güncellendi !"
             };
+        }
+
+        public CommandResponse Register(CreateUserRegisterRequest request)
+        {
+            byte[] passwordSalt, passwordHash;
+
+            HashHelper.CreatePasswordHash(request.UserPassword, out passwordSalt, out passwordHash);
+
+            var user = _mapper.Map<User>(request);
+
+            user.Password = new UserPassword()
+            {
+                PasswordSalt = passwordSalt,
+                PasswordHash = passwordHash
+            };
+
+            _userRepository.Add(user);
+            _userRepository.SaveChages();
+
+            return new CommandResponse()
+            {
+                Status = true,
+                Message = "Kullanıcı Kaydı Başarılı Bir Şekilde Gerçekleşti"
+            };
+
         }
     }
 }

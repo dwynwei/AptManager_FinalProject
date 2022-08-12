@@ -1,55 +1,56 @@
-﻿using DataAccessLayer.Base.MongoDB.AbstractBase;
-using Models.Document.DocumentBase;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using MongoDB.Driver;
-using Microsoft.Extensions.Configuration;
-using MongoDB.Bson;
+﻿//using DataAccessLayer.Base.MongoDB.AbstractBase;
+//using Models.Document.DocumentBase;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Linq.Expressions;
+//using System.Text;
+//using System.Threading.Tasks;
+//using MongoDB.Driver;
+//using Microsoft.Extensions.Configuration;
+//using MongoDB.Bson;
 
-namespace DataAccessLayer.Base.MongoDB.ConcreteBase
-{
-    public class DocumentRepository<T> : IDocumentRepository<T> where T : DocumentBaseEntity
-    {
-        private readonly IMongoCollection<T> _collection;
+//namespace DataAccessLayer.Base.MongoDB.ConcreteBase
+//{
+//    public abstract class DocumentRepository<T> : IDocumentRepository<T> where T : DocumentBaseEntity
+//    {
+//        private readonly IMongoCollection<T> _collection;
+//        protected DocumentRepository(MongoClient client, IConfiguration configuration, string collectionName)
+//        {
+//            var database = client.GetDatabase(configuration.GetSection("MongoDatabase").Value);
+//            _collection = database.GetCollection<T>(collectionName);
+//        }
 
-        protected DocumentRepository(MongoClient mongoClient, IConfiguration configuration, string collectionName)
-        {
-            var db = mongoClient.GetDatabase(configuration.GetSection("MongoDatabase").Value);
-            _collection = db.GetCollection<T>(collectionName);
-        }
+//        public void Add(T document)
+//        {
+//            _collection.InsertOne(document);
+//        }
 
-        public void Add(T entity)
-        {
-            _collection.InsertOne(entity);
-        }
+//        public void Update(T document)
+//        {
+//            _collection.FindOneAndReplace(x => x.Id == document.Id, document);
+//        }
 
-        public void Delete(ObjectId id)
-        {
-            _collection.FindOneAndDelete(x=>x.Id == id);
-        }
+//        public void Delete(ObjectId id)
+//        {
+//            _collection.FindOneAndDelete(x => x.Id == id);
+//        }
 
-        public T Get(Expression<Func<T, bool>> expression)
-        {
-            return _collection.Find(expression).FirstOrDefault();
-        }
+//        public T Get(ObjectId id)
+//        {
+//            return _collection.Find(x => x.Id == id).FirstOrDefault();
+//        }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> expression = null)
-        {
-            return expression == null ? _collection.AsQueryable() : _collection.AsQueryable().Where(expression);
-        }
+//        public T Get(Expression<Func<T, bool>> expression)
+//        {
+//            return _collection.Find(expression).FirstOrDefault();
+//        }
 
-        public T GetById(string id)
-        {
-            return null;
-        }
-
-        public void Update(T entity)
-        {
-            _collection.FindOneAndReplace(x=>x.Id == entity.Id, entity);
-        }
-    }
-}
+//        public IEnumerable<T> GetAll(Expression<Func<T, bool>> expression = null)
+//        {
+//            return expression == null
+//                ? _collection.AsQueryable()
+//                : _collection.AsQueryable().Where(expression);
+//        }
+//    }
+//}

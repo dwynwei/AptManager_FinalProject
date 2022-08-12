@@ -6,10 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Abstract
-{
-    public interface ICreditCardRepository:IDocumentRepository<CreditCard>
-    {
-
-    }
-}
+//namespace DataAccessLayer.Abstract
+//{
+//    public interface ICreditCardInfoRepository:IDocumentRepository<CreditCard>
+//    {
+//    }
+//}

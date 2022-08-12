@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Document\**" />
+    <Compile Remove="MongoSettings\**" />
+    <EmbeddedResource Remove="Document\**" />
+    <EmbeddedResource Remove="MongoSettings\**" />
+    <None Remove="Document\**" />
+    <None Remove="MongoSettings\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MongoDB.Bson" Version="2.17.1" />
   </ItemGroup>
 

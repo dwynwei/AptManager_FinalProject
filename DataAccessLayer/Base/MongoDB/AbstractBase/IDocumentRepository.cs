@@ -10,11 +10,12 @@ namespace DataAccessLayer.Base.MongoDB.AbstractBase
 {
     public interface IDocumentRepository<T> where T : class
     {
-        void Add(T entity);
+        void Add(T document);
+        void Update(T document);
         void Delete(ObjectId id);
-        void Update(T entity);
-        T GetById(string id);
+        T Get(ObjectId id);
         T Get(Expression<Func<T, bool>> expression);
-        IEnumerable<T> GetAll(Expression<Func<T,bool>>expression=null);
+        IEnumerable<T> GetAll(Expression<Func<T, bool>> expression = null);
+
     }
 }

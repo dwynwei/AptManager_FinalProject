@@ -16,5 +16,6 @@ namespace BusinessLayer.Abstract
         public CommandResponse InsertUserInfo (CreateHomeOwnerRequest request);
         public CommandResponse UpdateUserInfo (UpdateHomeOwnerRequest request);
         public CommandResponse DeleteUserInfo (User user);
+        public CommandResponse Register(CreateUserRegisterRequest request);
     }
 }

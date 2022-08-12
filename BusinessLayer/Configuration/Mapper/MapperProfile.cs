@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using DataTransferObject.Building.Requests;
+using DataTransferObject.CreditCard;
 using DataTransferObject.User;
 using DataTransferObject.User.Requests;
 using Models;
+using Models.MongoEntites;
 
 namespace BusinessLayer.Configuration.Mapper
 {
@@ -26,8 +28,10 @@ namespace BusinessLayer.Configuration.Mapper
             CreateMap<UpdateHomeOwnerRequest, User>();
             CreateMap<DeleteUserRequest, User>();
             CreateMap<User, SearchUserRequest>();
-            CreateMap<CreateUserRegisterRequest, User>();
+            CreateMap<CreateHomeOwnerRequest, User>();
             #endregion UserMap End
+            CreateMap<CreateCreditCardRequest, CreditCard>();
+            CreateMap<UpdateCreditCardRequest, CreditCard>();
 
 
         }

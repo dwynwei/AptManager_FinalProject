@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CreditCard\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AptManager_FinalProject\Models.csproj" />
   </ItemGroup>
 
