@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer.Abstract;
 using DataAccessLayer.Base;
 using DataAccessLayer.DbContexts;
+using Microsoft.EntityFrameworkCore;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,11 @@ namespace DataAccessLayer.Concrete
     {
         public BuildingRepository(AptManagerDbContext dbContext) : base(dbContext)
         {
+        }
+
+        public void Delete(int buildingId)
+        {
+            _dbContext.Remove(buildingId);
         }
     }
 }

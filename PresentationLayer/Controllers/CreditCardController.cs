@@ -40,12 +40,13 @@ namespace PresentationLayer.Controllers
         [HttpPost("AddCard")]
         public async Task<IActionResult> PostAsync(CreateCreditCardRequest card)
         {
+
             await _creditCardService.Create(card);
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAsync(string id ,[FromBody] CreditCard card)
+        public async Task<IActionResult> PutAsync(string id ,[FromBody] UpdateCreditCardRequest card)
         {
             var getCardId = await _creditCardService.GetbyId(id);
             if (getCardId == null)

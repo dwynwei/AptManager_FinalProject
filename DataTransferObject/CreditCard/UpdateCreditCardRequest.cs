@@ -13,7 +13,7 @@ namespace DataTransferObject.CreditCard
         public string LastName { get; set; }
         public string CardNumber { get; set; }
         public string CVC { get; set; }
-        public int ExpireMonth { get; set; }
-        public int ExpireYear { get; set; }
+        public string expireDate { get; set; }
+
     }
 }

@@ -18,6 +18,6 @@ namespace Models
         public string DoorNumber { get; set; }
         public int HomeOwnerId { get; set; }
         [ForeignKey("HomeOwnerId")]
-        public User User { get; set; }
+        ICollection<User> User { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace BusinessLayer.Configuration.Validator.CreditCardRequest
             RuleFor(x => x.LastName).Matches("^[a-zA-ZğüşöçİĞÜŞÖÇ]*").WithMessage("Soy İsim Formatı Doğru Değil");
             RuleFor(x => x.CVC).Matches("^\\d{3}$").WithMessage("CVC Formatı Doğru Değil");
             RuleFor(x => x.expireDate).Matches("^(0?[1-9]|[1][0-2])\\.[0-9]+").WithMessage("Tarih Formatı Yanlıştır Lütfen Düzeltiniz. Örn: 06.22");
-            RuleFor(x => x.expireDate).Must(isDateGreater).WithMessage("Verilen Tarih Bugünün Tarihinden Düşüktür. Lütfen Geçerli Bir Tarih Aralığı Giriniz");            
+            RuleFor(x => x.expireDate).Must(isDateGreater).WithMessage("Verilen Tarih Bugünün Tarihinden Eskidir. Lütfen Geçerli Bir Tarih Aralığı Giriniz");            
         }
 
         
@@ -33,8 +33,6 @@ namespace BusinessLayer.Configuration.Validator.CreditCardRequest
         {
             bool flag = false;
             string current = DateTime.Now.ToString("MM.yy");
-            string[] currentSplit = current.Split('.');
-
             var currentDate = DateTime.ParseExact(current, "MM.yy", CultureInfo.InvariantCulture);
             var gDate = DateTime.ParseExact(givenDate, "MM.yy", CultureInfo.InvariantCulture);
 

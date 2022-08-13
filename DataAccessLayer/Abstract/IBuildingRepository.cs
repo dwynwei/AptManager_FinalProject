@@ -10,5 +10,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IBuildingRepository:IEfBaseRepository<Building>
     {
+        public void Delete(int buildingId);
     }
 }

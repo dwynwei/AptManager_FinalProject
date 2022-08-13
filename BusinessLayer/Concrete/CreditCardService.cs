@@ -52,9 +52,13 @@ namespace BusinessLayer.Concrete
             await _mongoCollection.InsertOneAsync(entity);
         }
 
-        public async Task Update(string id, CreditCard card)
+        public async Task Update(string id, UpdateCreditCardRequest card)
         {
-            await _mongoCollection.ReplaceOneAsync(x => x.Id == new ObjectId(id), card);
+            var validator = new UpdateCreditCardRequestValidator();
+            validator.Validate(card).ThrowIfException();
+
+            var entity = _mapper.Map<CreditCard>(card);
+            await _mongoCollection.ReplaceOneAsync(x => x.Id == new ObjectId(id), entity);
         }
 
         public async Task Delete(string id)

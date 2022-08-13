@@ -33,7 +33,6 @@ namespace BusinessLayer.Configuration.Mapper
             CreateMap<CreateCreditCardRequest, CreditCard>();
             CreateMap<UpdateCreditCardRequest, CreditCard>();
 
-
         }
     }
 }
