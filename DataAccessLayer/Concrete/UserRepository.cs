@@ -3,6 +3,7 @@ using DataAccessLayer.Base;
 using DataAccessLayer.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

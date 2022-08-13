@@ -79,6 +79,7 @@ namespace BusinessLayer.Concrete
             var mappedEnt = _mapper.Map(buildingReq, entity);
 
             _buildingRepository.Update(mappedEnt);
+            _buildingRepository.SaveChages();
 
             return new CommandResponse()
             {
@@ -97,7 +98,7 @@ namespace BusinessLayer.Concrete
                     Status = false,
                     Message = $"{buildingId}'e Ait Kat bilgisi Bulunamadı!"
                 };
-
+            resp.ToString();
             return new CommandResponse()
             {
                 Status = true,

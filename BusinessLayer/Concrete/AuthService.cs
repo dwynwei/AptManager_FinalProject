@@ -4,13 +4,9 @@ using BusinessLayer.Configuration.CommandResponse;
 using DataAccessLayer.Abstract;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
@@ -32,14 +28,13 @@ namespace BusinessLayer.Concrete
 
             if (verifyPassword.Status)
             {
-                var tokenOption = _configuration.GetSection("TokenOptions") as TokenOption;
+                var tokenOption = _configuration.GetSection("TokenOptions").Get<TokenOption>();
 
                 var expireDate = DateTime.Now.AddDays(tokenOption.AccessTokenExpiration);
 
                 var claims = new Claim[]
                 {
                     new Claim(ClaimTypes.PrimarySid, user.NationalityId),
-                    new Claim(ClaimTypes.Name , user.Name),
                     new Claim(ClaimTypes.Role, user.Role.ToString())
                 };
 

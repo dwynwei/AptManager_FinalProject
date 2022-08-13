@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="HomeOwner\Requests\DeleteUserRequest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AptManager_FinalProject\Models.csproj" />
   </ItemGroup>
 

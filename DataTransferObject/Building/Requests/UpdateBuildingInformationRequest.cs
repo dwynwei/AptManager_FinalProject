@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,9 @@ namespace DataTransferObject.Building.Requests
     {
         public int Id { get; set; }
         public bool IsSettled { get; set; }
-        public string HomeType { get; set; }
-        public string Floor { get; set; }
-        public string DoorNumber { get; set; }
-        public string OwnerName { get; set; }
-        public string OwnerLastName { get; set; }
-
+        public string HomeType { get; set; } = string.Empty;
+        public string Floor { get; set; } = string.Empty;
+        public string DoorNumber { get; set; } = string.Empty;
+        ICollection<HomeOwner> Owner { get; set; }
     }
 }

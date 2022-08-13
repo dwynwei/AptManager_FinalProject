@@ -20,11 +20,17 @@ namespace DataAccessLayer.DbContexts
         public virtual DbSet<User> Users { get; set; } = default!;
         public virtual DbSet<Building> Buildings { get; set; } = default!;
         public virtual DbSet<UserPassword> Passwords { get; set; } = default!;
+        public virtual DbSet<HomeOwner> HomeOwner { get; set; } = default!;
 
         //protected override void OnConfiguring(DbContextOptionsBuilder builder)
         //{
         //    var connectionString = _configuration.GetConnectionString("MsSql");
         //    base.OnConfiguring(builder.UseSqlServer(connectionString));
         //}
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
+        }
     }
 }

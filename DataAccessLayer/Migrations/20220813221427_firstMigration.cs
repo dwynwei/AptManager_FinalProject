@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccessLayer.Migrations
 {
-    public partial class updatedDbMigration : Migration
+    public partial class firstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "HomeOwner",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -21,7 +21,21 @@ namespace DataAccessLayer.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CarPlateId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Role = table.Column<int>(type: "int", nullable: false)
+                    Bill = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HomeOwner", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NationalityId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Role = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -38,15 +52,15 @@ namespace DataAccessLayer.Migrations
                     HomeType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Floor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DoorNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HomeOwnerId = table.Column<int>(type: "int", nullable: true)
+                    OwnerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Buildings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Buildings_Users_HomeOwnerId",
-                        column: x => x.HomeOwnerId,
-                        principalTable: "Users",
+                        name: "FK_Buildings_HomeOwner_OwnerId",
+                        column: x => x.OwnerId,
+                        principalTable: "HomeOwner",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -73,9 +87,9 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Buildings_HomeOwnerId",
+                name: "IX_Buildings_OwnerId",
                 table: "Buildings",
-                column: "HomeOwnerId");
+                column: "OwnerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Passwords_UserId",
@@ -91,6 +105,9 @@ namespace DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Passwords");
+
+            migrationBuilder.DropTable(
+                name: "HomeOwner");
 
             migrationBuilder.DropTable(
                 name: "Users");

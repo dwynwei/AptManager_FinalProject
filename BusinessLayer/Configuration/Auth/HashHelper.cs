@@ -9,7 +9,7 @@ namespace BusinessLayer.Configuration.Auth
 {
     public static class HashHelper
     {
-        public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        public static void CreatePasswordHash(string password, out byte[] passwordSalt, out byte[] passwordHash)
         {
             using (var hashMac = new HMACSHA512())
             {

@@ -1,5 +1,4 @@
 ﻿using DataAccessLayer.Base;
-using Models;
 using Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IUserRepository:IEfBaseRepository<User>
+    public interface IHomeRepository:IEfBaseRepository<HomeOwner>
     {
-        User GetUserWithPassword(string nationalityId);
+        public void Delete(int ownerId);
     }
 }

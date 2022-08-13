@@ -9,6 +9,7 @@ using DataTransferObject.CreditCard;
 using DataTransferObject.User;
 using DataTransferObject.User.Requests;
 using Models;
+using Models.Entities;
 using Models.MongoEntites;
 
 namespace BusinessLayer.Configuration.Mapper
@@ -19,20 +20,18 @@ namespace BusinessLayer.Configuration.Mapper
         {
             #region Building AutoMapper
             CreateMap<CreateBuildingInformationRequest, Building>();
-            CreateMap<DeleteBuildingInformationRequest, Building>();
             CreateMap<UpdateBuildingInformationRequest, Building>();
             CreateMap<Building, SearchBuildingInformationRequest>();
             #endregion
-            #region UserMap AutoMapper
-            CreateMap<CreateUserRegisterRequest, User>();
-            CreateMap<UpdateHomeOwnerRequest, User>();
-            CreateMap<DeleteUserRequest, User>();
-            CreateMap<User, SearchUserRequest>();
-            CreateMap<CreateHomeOwnerRequest, User>();
+            #region HomeOwnerMap AutoMapper
+            CreateMap<UpdateHomeOwnerRequest, HomeOwner>();
+            CreateMap<HomeOwner, SearchUserRequest>();
+            CreateMap<CreateHomeOwnerRequest, HomeOwner>();
             #endregion UserMap End
             CreateMap<CreateCreditCardRequest, CreditCard>();
             CreateMap<UpdateCreditCardRequest, CreditCard>();
 
+            CreateMap<CreateUserRegisterRequest, User>();
         }
     }
 }

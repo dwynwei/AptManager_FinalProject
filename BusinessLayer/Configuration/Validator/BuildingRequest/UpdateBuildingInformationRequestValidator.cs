@@ -19,11 +19,11 @@ namespace BusinessLayer.Configuration.Validator.BuildingRequest
 
             RuleFor(x => x.DoorNumber).Matches("[0-9]").MaximumLength(3).WithMessage("Girilen Kapı Numarası Formatı Geçerli Değil Veya 3 Basamaktan Fazla Kapı Numarası Girilemez");
 
-            RuleFor(x => x.OwnerName).NotEmpty().WithMessage("İsim Alanı Boş Olamaz");
-            RuleFor(x => x.OwnerName).Matches("[a-z][A-Z]").WithMessage("Girilen İsim Alanı Formatı Geçerli Değil");
+            //RuleFor(x => x.User.Name).NotEmpty().WithMessage("İsim Alanı Boş Olamaz");
+            //RuleFor(x => x.User.Name).Matches("[a-z][A-Z]").WithMessage("Girilen İsim Alanı Formatı Geçerli Değil");
 
-            RuleFor(x => x.OwnerLastName).NotEmpty().WithMessage("Soy İsim Alanı Boş Olamaz");
-            RuleFor(x => x.OwnerLastName).Matches("[a-z][A-Z]").WithMessage("Girilen Soy İsim Alanı Formatı Geçerli Değil");
+            //RuleFor(x => x.User.LastName).NotEmpty().WithMessage("Soy İsim Alanı Boş Olamaz");
+            //RuleFor(x => x.User.LastName).Matches("[a-z][A-Z]").WithMessage("Girilen Soy İsim Alanı Formatı Geçerli Değil");
         }
     }
 }
