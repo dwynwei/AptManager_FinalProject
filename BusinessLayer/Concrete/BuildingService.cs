@@ -29,6 +29,7 @@ namespace BusinessLayer.Concrete
         public CommandResponse DeleteBuildingInfo(int buildingId)
         {
             _buildingRepository.Delete(buildingId);
+            _buildingRepository.SaveChages();
 
             return new CommandResponse()
             {
@@ -98,7 +99,7 @@ namespace BusinessLayer.Concrete
                     Status = false,
                     Message = $"{buildingId}'e Ait Kat bilgisi Bulunamadı!"
                 };
-            resp.ToString();
+            _buildingRepository.GetAsync(buildingId);
             return new CommandResponse()
             {
                 Status = true,

@@ -13,6 +13,7 @@ namespace DataAccessLayer.Base
         T Update(T entity);
         void Delete(T entity);
         T Get(Expression<Func<T, bool>> predicate);
+        Task<T> GetAsync(int id);
         IEnumerable<T> GetAll(Expression<Func<T,bool>> predicate = null);
         void SaveChages();
     }

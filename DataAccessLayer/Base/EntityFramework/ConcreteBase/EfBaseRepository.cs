@@ -31,7 +31,8 @@ namespace DataAccessLayer.Base
 
         public T Get(Expression<Func<T, bool>> predicate)
         {
-            return _dbContext.Set<T>().FirstOrDefault(predicate);
+            //return _dbContext.Set<T>().FirstOrDefault(predicate);
+            return _dbContext.Set<T>().SingleOrDefault(predicate);
         }
 
         public IEnumerable<T> GetAll(Expression<Func<T, bool>> predicate = null)
@@ -53,6 +54,11 @@ namespace DataAccessLayer.Base
         {
             _dbContext.Update(entity);
             return entity;
+        }
+
+        public async Task<T> GetAsync(int id)
+        {
+            return await _dbContext.FindAsync<T>(id);
         }
     }
 }
