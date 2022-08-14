@@ -22,7 +22,7 @@ namespace BusinessLayer.Helper
             _ownerRepository = ownerRepository;
         }
 
-        public decimal BillCalculator(decimal price,int cnt)
+        public decimal BillCalculator(decimal price, int cnt)
         {
             if (price < 0)
             {

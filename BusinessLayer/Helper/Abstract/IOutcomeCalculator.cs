@@ -8,7 +8,7 @@ namespace BusinessLayer.Helper.Abstract
 {
     public interface IOutcomeCalculator
     {
-        public decimal BillCalculator(decimal price, decimal cnt);
+        public decimal BillCalculator(decimal price, int cnt);
         public void BillAssigner(decimal price);
     }
 }
