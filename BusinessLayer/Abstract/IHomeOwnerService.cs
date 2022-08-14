@@ -7,6 +7,7 @@ using BusinessLayer.Configuration.CommandResponse;
 using DataTransferObject.User;
 using DataTransferObject.User.Requests;
 using Models;
+using Models.Entities;
 
 namespace BusinessLayer.Abstract
 {
@@ -16,5 +17,6 @@ namespace BusinessLayer.Abstract
         public CommandResponse InsertUserInfo (CreateHomeOwnerRequest request);
         public CommandResponse UpdateUserInfo (UpdateHomeOwnerRequest request);
         public CommandResponse DeleteUserInfo (int id);
+        public HomeOwner GetbyId(int id);
     }
 }

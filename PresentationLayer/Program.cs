@@ -10,9 +10,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Models.EmailEntities;
 using Models.MongoEntites;
 using MongoDB.Driver;
 using System.Text;
+using Hangfire;
+using BackgroundJobs.Abstract;
+using BackgroundJobs.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,15 +66,16 @@ builder.Services.AddDbContext<AptManagerDbContext>(x => x.UseSqlServer(builder.C
 
 // Mongo Server Conf
 
-//builder.Services.AddSingleton<MongoClient>(x => new MongoClient("mongodb://localhost:27017"));
-
 builder.Services.Configure<MongoSettings>(builder.Configuration.GetSection("MongoSettings"));
 
+// Email Conf
+#region Email Conf And Implementation
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+builder.Services.AddTransient<IMailService, MailService>();
+#endregion
 
-//builder.Services.AddSingleton<ICreditCardInfoRepository, CreditCardInfoRepository>();
-
-//builder.Services.AddSingleton<ICreditCardService, CreditCardService>();
-
+// Services
+#region Services Implementation
 builder.Services.AddSingleton<CreditCardService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IBuildingRepository, BuildingRepository>();
@@ -79,7 +84,32 @@ builder.Services.AddScoped<IHomeRepository, HomeOwnerRepository>();
 builder.Services.AddScoped<IHomeOwnerService, HomeOwnerService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IHangFireJob, HangFireJob>();
+#endregion
 
+// HangFire
+#region HangFire Implementation
+var hfDb = builder.Configuration.GetSection("ConnectionStrings:HangfireConnection").Value;
+
+builder.Services.AddHangfire(conf => conf
+.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+.UseSimpleAssemblyNameTypeSerializer()
+.UseRecommendedSerializerSettings()
+.UseSqlServerStorage(hfDb, new Hangfire.SqlServer.SqlServerStorageOptions
+{
+    CommandBatchMaxTimeout = TimeSpan.FromMinutes(3),
+    SlidingInvisibilityTimeout = TimeSpan.FromMinutes(3),
+    QueuePollInterval = TimeSpan.Zero,
+    UseRecommendedIsolationLevel = true,
+    DisableGlobalLocks = true
+}));
+
+builder.Services.AddHangfireServer();
+
+#endregion
+
+// AutoMapper
+#region AutoMapper Conf and Implementation
 builder.Services.AddAutoMapper(conf =>
     {
         conf.AddProfile(new MapperProfile());
@@ -106,9 +136,9 @@ builder.Services.AddAutoMapper(conf =>
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.SecurityKey))
             };
         });
+#endregion
 
-
-    var app = builder.Build();
+var app = builder.Build();
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
@@ -120,5 +150,9 @@ builder.Services.AddAutoMapper(conf =>
     app.UseAuthorization();
 
     app.MapControllers();
+
+    app.UseHangfireDashboard("/HfJob", new DashboardOptions());
+
+    app.UseRouting();
 
     app.Run();

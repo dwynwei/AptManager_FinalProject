@@ -90,5 +90,11 @@ namespace BusinessLayer.Concrete
                 Message = "Kullanıcı Başarılı Bir Şekilde Güncellendi !"
             };
         }
+
+        HomeOwner IHomeOwnerService.GetbyId(int id)
+        {
+            var data = _ownerRepository.Get(x=>x.Id == id);
+            return data;
+        }
     }
 }

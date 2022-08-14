@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationLayer", "Presen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTransferObject", "DataTransferObject\DataTransferObject.csproj", "{CB117B12-D730-4ED1-B861-24F3BB79D1B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{7CF04EB5-0D3B-4911-830E-153485C71686}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{7CF04EB5-0D3B-4911-830E-153485C71686}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundJobs", "BackgroundJobs\BackgroundJobs.csproj", "{FB8C7876-B966-49B2-82EC-4F63F4E6BB15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{7CF04EB5-0D3B-4911-830E-153485C71686}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CF04EB5-0D3B-4911-830E-153485C71686}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CF04EB5-0D3B-4911-830E-153485C71686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB8C7876-B966-49B2-82EC-4F63F4E6BB15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB8C7876-B966-49B2-82EC-4F63F4E6BB15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB8C7876-B966-49B2-82EC-4F63F4E6BB15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB8C7876-B966-49B2-82EC-4F63F4E6BB15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

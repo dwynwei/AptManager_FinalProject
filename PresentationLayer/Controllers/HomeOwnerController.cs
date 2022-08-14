@@ -24,21 +24,21 @@ namespace PresentationLayer.Controllers
             return Ok(resp);
         }
 
-        [HttpGet("GetuserInfo")]
+        [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
             var data = _ownerService.getAllUserInfo();
             return Ok(data);
         }
 
-        [HttpPut("UpdateUserInfo")]
+        [HttpPut("Update")]
         public IActionResult Update(UpdateHomeOwnerRequest request)
         {
             var resp = _ownerService.UpdateUserInfo(request);
             return Ok(resp);
         }
 
-        [HttpDelete("DeleteUser/{id}")]
+        [HttpDelete("Delete/{id}")]
         public IActionResult Delete(int id)
         {
             var resp = _ownerService.DeleteUserInfo(id);

@@ -14,7 +14,7 @@ namespace BusinessLayer.Abstract
         public IEnumerable<SearchBuildingInformationRequest> GetAllBuildingInfo();
         public CommandResponse InsertBuildingInfo(CreateBuildingInformationRequest buildingReq);
         public CommandResponse UpdateBuildingInfo(UpdateBuildingInformationRequest buildingReq);
-        public CommandResponse DeleteBuildingInfo(int buildingId);
-        public CommandResponse GetBuildingInfoById(int buildingId);
+        public Task<CommandResponse> DeleteBuildingInfo(int buildingId);
+        public Building GetBuildingInfoById(int buildingId);
     }
 }

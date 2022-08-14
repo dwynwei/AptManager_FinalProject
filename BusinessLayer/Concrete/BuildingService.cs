@@ -26,9 +26,11 @@ namespace BusinessLayer.Concrete
             _mapper = mapper;
         }
 
-        public CommandResponse DeleteBuildingInfo(int buildingId)
+        public async Task<CommandResponse> DeleteBuildingInfo(int buildingId)
         {
-            _buildingRepository.Delete(buildingId);
+            var data = await _buildingRepository.GetAsync(buildingId);
+
+            _buildingRepository.Delete(data);
             _buildingRepository.SaveChages();
 
             return new CommandResponse()
@@ -89,22 +91,10 @@ namespace BusinessLayer.Concrete
             };
         }
 
-        public CommandResponse GetBuildingInfoById(int buildingId)
+        public Building GetBuildingInfoById(int buildingId)
         {
-            var resp = _buildingRepository.Get(x => x.Id == buildingId);
-
-            if (resp == null)
-                return new CommandResponse()
-                {
-                    Status = false,
-                    Message = $"{buildingId}'e Ait Kat bilgisi Bulunamadı!"
-                };
-            _buildingRepository.GetAsync(buildingId);
-            return new CommandResponse()
-            {
-                Status = true,
-                Message = $"{buildingId}'e ait Kat bilgisi getirildi"
-            };
+            var entity = _buildingRepository.Get(x => x.Id == buildingId);
+            return entity;
         }
     }
 }

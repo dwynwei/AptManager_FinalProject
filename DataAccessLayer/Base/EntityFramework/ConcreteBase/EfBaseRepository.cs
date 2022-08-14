@@ -31,8 +31,7 @@ namespace DataAccessLayer.Base
 
         public T Get(Expression<Func<T, bool>> predicate)
         {
-            //return _dbContext.Set<T>().FirstOrDefault(predicate);
-            return _dbContext.Set<T>().SingleOrDefault(predicate);
+            return _dbContext.Set<T>().FirstOrDefault(predicate);
         }
 
         public IEnumerable<T> GetAll(Expression<Func<T, bool>> predicate = null)
