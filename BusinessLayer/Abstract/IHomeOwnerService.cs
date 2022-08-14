@@ -13,7 +13,7 @@ namespace BusinessLayer.Abstract
 {
     public interface IHomeOwnerService
     {
-        public IEnumerable<SearchUserRequest> getAllUserInfo();
+        public IEnumerable<SearchOwnerRequest> getAllUserInfo();
         public CommandResponse InsertUserInfo (CreateHomeOwnerRequest request);
         public CommandResponse UpdateUserInfo (UpdateHomeOwnerRequest request);
         public CommandResponse DeleteUserInfo (int id);

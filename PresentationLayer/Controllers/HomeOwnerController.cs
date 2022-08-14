@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using DataTransferObject.User;
 using DataTransferObject.User.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 

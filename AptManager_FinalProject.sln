@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTransferObject", "DataT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{7CF04EB5-0D3B-4911-830E-153485C71686}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundJobs", "BackgroundJobs\BackgroundJobs.csproj", "{FB8C7876-B966-49B2-82EC-4F63F4E6BB15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackgroundJobs", "BackgroundJobs\BackgroundJobs.csproj", "{FB8C7876-B966-49B2-82EC-4F63F4E6BB15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cache", "Cache\Cache.csproj", "{CEA195E1-9FB6-438E-B21B-B87EB0151E5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{7E5EAD0B-1A27-4121-BB97-5A4FA6572697}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{FB8C7876-B966-49B2-82EC-4F63F4E6BB15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB8C7876-B966-49B2-82EC-4F63F4E6BB15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB8C7876-B966-49B2-82EC-4F63F4E6BB15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEA195E1-9FB6-438E-B21B-B87EB0151E5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEA195E1-9FB6-438E-B21B-B87EB0151E5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEA195E1-9FB6-438E-B21B-B87EB0151E5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEA195E1-9FB6-438E-B21B-B87EB0151E5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E5EAD0B-1A27-4121-BB97-5A4FA6572697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E5EAD0B-1A27-4121-BB97-5A4FA6572697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E5EAD0B-1A27-4121-BB97-5A4FA6572697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E5EAD0B-1A27-4121-BB97-5A4FA6572697}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

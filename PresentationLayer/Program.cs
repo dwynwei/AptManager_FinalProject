@@ -17,6 +17,11 @@ using System.Text;
 using Hangfire;
 using BackgroundJobs.Abstract;
 using BackgroundJobs.Concrete;
+using Models.CacheEntities;
+using ServiceStack.Redis;
+using Models.Entities;
+using BusinessLayer.Helper;
+using BusinessLayer.Helper.Abstract;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,6 +68,18 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddDbContext<AptManagerDbContext>(x => x.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings:MsSql").Value));
 
+builder.Services.AddAuthorization();
+builder.Services.AddControllers();
+//builder.Services.AddAuthorization(opt =>
+//{
+//    opt.AddPolicy("ManagerAccess", policy =>
+//    policy.RequireAssertion(context => context.User.IsInRole(UserRole.Manager.ToString())));
+
+//    opt.AddPolicy("UserAccess", policy =>
+//    policy.RequireAssertion(context => 
+//        context.User.IsInRole(UserRole.User.ToString()) || 
+//        context.User.IsInRole(UserRole.Manager.ToString())));
+//});
 
 // Mongo Server Conf
 
@@ -84,7 +101,8 @@ builder.Services.AddScoped<IHomeRepository, HomeOwnerRepository>();
 builder.Services.AddScoped<IHomeOwnerService, HomeOwnerService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IHangFireJob, HangFireJob>();
+builder.Services.AddScoped<IHangFireJobService, HangFireJobService>();
+builder.Services.AddTransient<IOutcomeCalculator, OutcomeCalculator>();
 #endregion
 
 // HangFire
@@ -136,6 +154,22 @@ builder.Services.AddAutoMapper(conf =>
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.SecurityKey))
             };
         });
+#endregion
+
+// Redis Conf (Not Used in Any Services)
+#region Redis Conf And Implementation
+var redisConf = builder.Configuration.GetSection("RedisEndpointInfo").Get<RedisEndPointSettings>();
+
+builder.Services.AddSingleton<RedisEndpoint>(opt =>
+{
+    return new RedisEndpoint
+    {
+        Host = redisConf.Endpoint,
+        Port = redisConf.Port,
+        Username = redisConf.Username,
+        Password = redisConf.Password
+    };
+});
 #endregion
 
 var app = builder.Build();

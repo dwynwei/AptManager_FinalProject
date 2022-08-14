@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BackgroundJobs.Abstract
 {
-    public interface IHangFireJob
+    public interface IHangFireJobService
     {
         void DelayedJob(int userId, string userName, TimeSpan timeSpan);
         void FireAndForget(int userId);

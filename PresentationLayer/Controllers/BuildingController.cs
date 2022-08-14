@@ -1,7 +1,10 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.Configuration.Auth;
 using DataTransferObject.Building.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Models.Entities;
 
 namespace PresentationLayer.Controllers
 {

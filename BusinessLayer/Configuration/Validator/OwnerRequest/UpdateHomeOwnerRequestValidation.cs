@@ -27,7 +27,7 @@ namespace BusinessLayer.Configuration.Validator.UserRequest
             RuleFor(x => x.PhoneNumber).NotEmpty().WithMessage("Telefon Numarası Alanı Boş Olamaz");
             RuleFor(x => x.PhoneNumber).Matches("^\\+?[1-9][0-9]{7,14}$").WithMessage("Girilen Telefon Numarası Şablonu Geçerli Değildir.");
 
-            RuleFor(x => x.CarPlateId).Matches("/^(0[1-9]|[1-7][0-9]|8[01])(([A-PR-VYZ])(\\d{4,5})|([A-PR-VYZ]{2})(\\d{3,4})|([A-PR-VYZ]{3})(\\d{2,3}))$/").WithMessage("Girilen Plaka Alanı Formatı Geçerli Değil");
+            RuleFor(x => x.CarPlateId).Matches("/^$|^(0[1-9]|[1-7][0-9]|8[01])(([A-PR-VYZ])(\\d{4,5})|([A-PR-VYZ]{2})(\\d{3,4})|([A-PR-VYZ]{3})(\\d{2,3}))$/").When(x => !string.IsNullOrEmpty(x.CarPlateId)).WithMessage("Girilen Plaka Alanı Formatı Geçerli Değil örn: 34-FF-528 ");
         }
     }
 }

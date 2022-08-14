@@ -15,5 +15,6 @@ namespace DataTransferObject.User
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string CarPlateId { get; set; }
+        public decimal Bill { get; set; }
     }
 }

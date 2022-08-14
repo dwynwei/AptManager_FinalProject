@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace BackgroundJobs.Concrete
 {
-    public class HangFireJob : IHangFireJob
+    public class HangFireJobService : IHangFireJobService
     {
         private readonly IMailService _mailService;
         private readonly IHomeOwnerService _ownerService;
 
-        public HangFireJob(IMailService mailService, IHomeOwnerService ownerService)
+        public HangFireJobService(IMailService mailService, IHomeOwnerService ownerService)
         {
             _ownerService = ownerService;
             _mailService = mailService;

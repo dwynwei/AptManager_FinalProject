@@ -22,7 +22,6 @@ namespace BusinessLayer.Concrete
     {
         private readonly IMongoCollection<CreditCard> _mongoCollection;
         private readonly IMapper _mapper;
-        //private readonly IHangFireJob _hangFireJob;
 
         public CreditCardService(IOptions<MongoSettings> options, IMapper mapper)
         {

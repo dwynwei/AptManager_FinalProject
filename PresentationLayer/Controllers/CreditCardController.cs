@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.Configuration.Auth;
 using DataTransferObject.CreditCard;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.Entities;
 using Models.MongoEntites;

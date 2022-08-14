@@ -22,6 +22,7 @@ namespace BusinessLayer.Concrete
     {
         private readonly IHomeRepository _ownerRepository;
         private readonly IMapper _mapper;
+        //private readonly IHangFireJobService _jobService;
 
         public HomeOwnerService(IHomeRepository ownerRepository, IMapper mapper)
         {
@@ -41,10 +42,10 @@ namespace BusinessLayer.Concrete
             };
         }
 
-        public IEnumerable<SearchUserRequest> getAllUserInfo()
+        public IEnumerable<SearchOwnerRequest> getAllUserInfo()
         {
             var data = _ownerRepository.GetAll();
-            var mapper = data.Select(x=> _mapper.Map<SearchUserRequest>(x)).ToList();
+            var mapper = data.Select(x=> _mapper.Map<SearchOwnerRequest>(x)).ToList();
             return mapper;
         }
 
@@ -83,6 +84,7 @@ namespace BusinessLayer.Concrete
             var mappedEnt = _mapper.Map(request, entity);
 
             _ownerRepository.Update(mappedEnt);
+            _ownerRepository.SaveChages();
 
             return new CommandResponse()
             {

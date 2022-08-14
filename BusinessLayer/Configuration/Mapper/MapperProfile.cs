@@ -25,7 +25,7 @@ namespace BusinessLayer.Configuration.Mapper
             #endregion
             #region HomeOwnerMap AutoMapper
             CreateMap<UpdateHomeOwnerRequest, HomeOwner>();
-            CreateMap<HomeOwner, SearchUserRequest>();
+            CreateMap<HomeOwner, SearchOwnerRequest>();
             CreateMap<CreateHomeOwnerRequest, HomeOwner>();
             #endregion UserMap End
             CreateMap<CreateCreditCardRequest, CreditCard>();
