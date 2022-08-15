@@ -18,6 +18,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
+    /*
+     * HomeOwner Service
+     */
     public class HomeOwnerService : IHomeOwnerService
     {
         private readonly IHomeRepository _ownerRepository;

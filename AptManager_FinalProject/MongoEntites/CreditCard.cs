@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Models.MongoEntites
 {
+    /*
+     * Credit Card Model for MongoDb NoSql Document Storage
+     */
     public class CreditCard
     {
         [BsonId]
@@ -17,6 +20,6 @@ namespace Models.MongoEntites
         public string CardNumber { get; set; }
         public string CVC { get; set; }
         public string ExpireDate { get; set; }
-        public decimal Balance { get; set; } = (decimal)2000;
+        public decimal Balance { get; set; }
     }
 }

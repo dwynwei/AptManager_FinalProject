@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataTransferObject.CreditCard
 {
+    /*
+     * DTO For Searching Credit Card
+     */
     public class SearchCreditCardRequest
     {
         public string Id { get; set; }

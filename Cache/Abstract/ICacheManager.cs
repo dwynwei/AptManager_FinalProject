@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cache.Abstract
 {
+    /*
+     *  Cache Manager Interface Which if want to implement other Manager Libraries
+     */
     public interface ICacheManager
     {
         T Get<T>(string key);

@@ -19,7 +19,7 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpPost("AddFee")]
-        public IActionResult AddFee(decimal price)
+        public IActionResult AddFee(decimal price) // Assign Fee to all HomeOwners
         {
             _calculator.BillAssigner(price);
             var entity = _ownerService.getAllUserInfo();

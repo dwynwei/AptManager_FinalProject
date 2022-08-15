@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Models.Entities
 {
+    /*
+     * User Account Password Model
+     */
     public class UserPassword
     {
         [Key]

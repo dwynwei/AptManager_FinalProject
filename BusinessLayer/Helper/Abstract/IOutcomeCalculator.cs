@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Helper.Abstract
 {
+    /*
+     * Apartment Fee Calculator Helper Interface
+     */
     public interface IOutcomeCalculator
     {
         public decimal BillCalculator(decimal price, int cnt);

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Configuration.Auth
 {
+    /*
+     * Hash Helper For Passwords
+     */
     public static class HashHelper
     {
         public static void CreatePasswordHash(string password, out byte[] passwordSalt, out byte[] passwordHash)

@@ -23,14 +23,14 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetAllAsync() // Async Get All Credit Card information
         {
             var data = await _creditCardService.Get();
             return Ok(data);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetByIdAsync(string id)
+        public async Task<IActionResult> GetByIdAsync(string id) // Async Get One Credit Card information by Id
         {
             var card = await _creditCardService.GetbyId(id);
             if (card == null)
@@ -40,7 +40,7 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpPost("AddCard")]
-        public async Task<IActionResult> PostAsync(CreateCreditCardRequest card)
+        public async Task<IActionResult> PostAsync(CreateCreditCardRequest card) // Async Add a Credit Card information
         {
 
             await _creditCardService.Create(card);
@@ -48,7 +48,7 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAsync(string id ,[FromBody] UpdateCreditCardRequest card)
+        public async Task<IActionResult> PutAsync(string id ,[FromBody] UpdateCreditCardRequest card) // Async Update a Credit Card information by Id
         {
             var getCardId = await _creditCardService.GetbyId(id);
             if (getCardId == null)
@@ -61,7 +61,7 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteAsync(string id)
+        public async Task<IActionResult> DeleteAsync(string id) // Async Delete a Credit Card information
         {
             var getcardId = await _creditCardService.GetbyId(id);
             if (getcardId == null)

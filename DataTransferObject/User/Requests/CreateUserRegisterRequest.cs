@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataTransferObject.User.Requests
 {
+    /*
+     * DTO For Creating a User Information
+     */
     public class CreateUserRegisterRequest
     {
         public string Name { get; set; }

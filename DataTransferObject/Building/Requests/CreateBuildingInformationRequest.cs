@@ -9,6 +9,10 @@ using Models.Entities;
 
 namespace DataTransferObject.Building.Requests
 {
+    /*
+     * DTO For Creating A Home Information
+     */
+
     public class CreateBuildingInformationRequest
     {
         public bool IsSettled { get; set; }

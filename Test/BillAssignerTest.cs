@@ -9,6 +9,9 @@ using Xunit;
 
 namespace Test
 {
+    /*
+     * Success Test For BillAssigner
+     */
     public class BillAssignerTest
     {
         private readonly IOutcomeCalculator _calculator;

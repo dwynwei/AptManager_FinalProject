@@ -16,7 +16,7 @@ namespace DataAccessLayer.Concrete
         {
         }
 
-        public void Delete(int ownerId)
+        public void Delete(int ownerId) // Deleting Entity By Id
         {
             _dbContext.Remove(ownerId);
         }

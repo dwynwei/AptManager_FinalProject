@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Helper
 {
+    /*
+     * Apartment Fee Calculator Class
+     */
     public class OutcomeCalculator:IOutcomeCalculator
     {
         private readonly IHomeRepository _ownerRepository;

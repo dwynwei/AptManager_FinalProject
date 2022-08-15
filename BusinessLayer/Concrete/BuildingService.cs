@@ -14,6 +14,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
+    /*
+     * Building Service
+     */
     public class BuildingService : IBuildingService
     {
         private readonly IBuildingRepository _buildingRepository;

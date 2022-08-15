@@ -14,6 +14,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
+    /*
+     * User Service
+     */
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;

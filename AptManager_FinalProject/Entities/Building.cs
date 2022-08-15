@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+    /*
+     * Home Entity Model for Home Information
+     */
     public class Building
     {
         [Key]

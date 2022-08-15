@@ -16,7 +16,7 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpPost("Register")]
-        public IActionResult Register(CreateUserRegisterRequest request)
+        public IActionResult Register(CreateUserRegisterRequest request) // Register a User Account to System
         {
             var resp = _userService.Register(request);
             return Ok(resp);

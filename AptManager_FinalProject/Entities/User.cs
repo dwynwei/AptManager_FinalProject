@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
+    /*
+     * User Account Model for Auth to System
+     */
     public class User
     {
         [Key]

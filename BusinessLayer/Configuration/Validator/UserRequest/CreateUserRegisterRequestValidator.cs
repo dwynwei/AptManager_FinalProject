@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Configuration.Validator.UserRequest
 {
+    /*
+     * Fluent Validation Patterns For Each User Account Entity if Needed
+     */
     public class CreateUserRegisterRequestValidator : AbstractValidator<CreateUserRegisterRequest>
     {
         public CreateUserRegisterRequestValidator()

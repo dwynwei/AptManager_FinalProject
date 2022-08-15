@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Base
 {
+    /*
+     * Entity Framework Base Class Created as Generic
+     */
     public class EfBaseRepository<T, TDbContext> : IEfBaseRepository<T> 
         where T : class
         where TDbContext:DbContext

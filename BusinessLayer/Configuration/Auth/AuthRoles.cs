@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Configuration.Auth
 {
+    /*
+     * Custom Authorize Attribute Setting
+     */
     public class AuthRoles: AuthorizeAttribute
     {
         private UserRole roles;

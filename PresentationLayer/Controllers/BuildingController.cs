@@ -20,35 +20,35 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult GetById(int id) // Getting Building Information By Id
         {
             var data = _buildingService.GetBuildingInfoById(id);
             return Ok(data);
         }
 
         [HttpGet("GetAll")]
-        public IActionResult GetAll()
+        public IActionResult GetAll() // Getting All Building Information
         {
             var data = _buildingService.GetAllBuildingInfo();
             return Ok(data);
         }
 
         [HttpPost("AddBuildingInfo")]
-        public IActionResult AddBuildingInfo(CreateBuildingInformationRequest req)
+        public IActionResult AddBuildingInfo(CreateBuildingInformationRequest req) // Adding a building information
         {
             var resp = _buildingService.InsertBuildingInfo(req);
             return Ok(resp);
         }
 
         [HttpPut("UpdateBuildingInfo/{id}")]
-        public IActionResult UpdateBuildingInfo(UpdateBuildingInformationRequest req)
+        public IActionResult UpdateBuildingInfo(UpdateBuildingInformationRequest req) // Updating a building information
         {
             var resp = _buildingService.UpdateBuildingInfo(req);
             return Ok(resp);
         }
 
         [HttpDelete("DeleteBuildingInfo/{id}")]
-        public IActionResult DeleteBuildingInfo(int id)
+        public IActionResult DeleteBuildingInfo(int id) // Deleting a building information
         {
             _buildingService.DeleteBuildingInfo(id);
             return Ok($"{id}'e ait Kat Bilgisi Silindi");

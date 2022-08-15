@@ -18,7 +18,7 @@ namespace DataAccessLayer.Concrete
         {
         }
 
-        public User GetUserWithPassword(string nationalityId)
+        public User GetUserWithPassword(string nationalityId) // Getting User With Password
         {
             return _dbContext.Users.Include(x=>x.Password).FirstOrDefault(x=>x.NationalityId == nationalityId);
         }

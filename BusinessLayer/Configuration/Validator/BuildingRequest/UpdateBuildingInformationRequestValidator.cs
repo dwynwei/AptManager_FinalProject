@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Configuration.Validator.BuildingRequest
 {
+    /*
+     * Fluent Validation Patterns For Each Home Entity if Needed
+     */
     public class UpdateBuildingInformationRequestValidator : AbstractValidator<UpdateBuildingInformationRequest>
     {
         public UpdateBuildingInformationRequestValidator()

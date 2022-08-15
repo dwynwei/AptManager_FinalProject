@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Models.MongoEntites
 {
+    /*
+     * Mongo Connection Settings
+     * Look at "appsettings.json" for more information
+     */
     public class MongoSettings
     {
         public string ConnectionString { get; set; }

@@ -14,6 +14,10 @@ using Models.MongoEntites;
 
 namespace BusinessLayer.Configuration.Mapper
 {
+    /*
+     * Mapper Class which is used AutoMapper
+     * Maps DTO to Models or Models to DTO
+     */
     public class MapperProfile:Profile
     {
         public MapperProfile()

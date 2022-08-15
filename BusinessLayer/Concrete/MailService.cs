@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
+    /*
+     * Mail Service Which related with HangFire
+     */
     public class MailService : IMailService
     {
         private readonly MailSettings _settings;

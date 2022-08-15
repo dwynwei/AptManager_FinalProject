@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Models.Entities
 {
+    /*
+     * HomeOwner Entity Model for Home Information which is living In Home
+     */
     public class HomeOwner
     {
         [Key]

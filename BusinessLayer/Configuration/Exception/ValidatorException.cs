@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Configuration.Exception
 {
+    /*
+     * Custom Exception For FluentValidation
+     */
     public static class ValidatorException
     {
         public static void ThrowIfException(this FluentValidation.Results.ValidationResult validationResult)

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataTransferObject.CreditCard
 {
+    /*
+     * DTO For Updating Credit Card
+     */
     public class UpdateCreditCardRequest
     {
         public string Id { get; set; }

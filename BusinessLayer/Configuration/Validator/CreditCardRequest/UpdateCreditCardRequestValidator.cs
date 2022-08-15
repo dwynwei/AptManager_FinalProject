@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Configuration.Validator.CreditCardRequest
 {
+    /*
+     * Fluent Validation Patterns For Each CreditCard Entity if Needed
+     */
     public class UpdateCreditCardRequestValidator:AbstractValidator<UpdateCreditCardRequest>
     {
         public UpdateCreditCardRequestValidator()

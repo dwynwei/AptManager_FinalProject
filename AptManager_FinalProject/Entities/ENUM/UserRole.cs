@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models.Entities
 {
+    /*
+     * Role Class for Role-Based Authorization
+     */
     public enum UserRole
     {
         Manager=1,

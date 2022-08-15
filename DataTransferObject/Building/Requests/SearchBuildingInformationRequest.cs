@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataTransferObject.Building.Requests
 {
+    /*
+     * DTO For Searching A Home Information
+     */
     public class SearchBuildingInformationRequest
     {
         public int Id { get; set; }

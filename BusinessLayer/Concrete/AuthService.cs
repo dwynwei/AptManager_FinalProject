@@ -10,6 +10,9 @@ using System.Text;
 
 namespace BusinessLayer.Concrete
 {
+    /*
+     * Authentication Service
+     */
     public class AuthService : IAuthService
     {
         private readonly IUserRepository _userRepository;

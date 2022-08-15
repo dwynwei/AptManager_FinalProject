@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataTransferObject.Building.Requests
 {
+    /*
+     * DTO For Updating A Home Information
+     */
     public class UpdateBuildingInformationRequest
     {
         public int Id { get; set; }

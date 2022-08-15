@@ -4,7 +4,6 @@ using BusinessLayer.Configuration.Mapper;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.DbContexts;
-using DataAccessLayer.DbContexts.Abstract;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -30,6 +29,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAuthorization();
+
+// Swagger Service with Token Option
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -70,6 +71,7 @@ builder.Services.AddDbContext<AptManagerDbContext>(x => x.UseSqlServer(builder.C
 
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
+
 //builder.Services.AddAuthorization(opt =>
 //{
 //    opt.AddPolicy("ManagerAccess", policy =>
@@ -82,8 +84,9 @@ builder.Services.AddControllers();
 //});
 
 // Mongo Server Conf
-
+#region Mongo Conf
 builder.Services.Configure<MongoSettings>(builder.Configuration.GetSection("MongoSettings"));
+#endregion
 
 // Email Conf
 #region Email Conf And Implementation
@@ -184,7 +187,8 @@ var app = builder.Build();
     app.UseAuthorization();
 
     app.MapControllers();
-
+    
+    // Hangfire Endpoint 
     app.UseHangfireDashboard("/HfJob", new DashboardOptions());
 
     app.UseRouting();

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace BackgroundJobs.Concrete
 {
+    /*
+     * HangFire Jobs Class
+     */
     public class HangFireJobService : IHangFireJobService
     {
         private readonly IMailService _mailService;

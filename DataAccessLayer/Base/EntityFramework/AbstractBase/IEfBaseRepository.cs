@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Base
 {
+    /*
+     * Entity Framework Base Interface Created as Generic
+     */
     public interface IEfBaseRepository<T> where T : class
     {
         T Add(T entity);

@@ -10,6 +10,9 @@ using Models.Entities;
 
 namespace DataAccessLayer.DbContexts
 {
+    /*
+     * Entity Framework DB Context
+     */
     public class AptManagerDbContext:DbContext
     {
         public AptManagerDbContext(DbContextOptions options) : base(options)

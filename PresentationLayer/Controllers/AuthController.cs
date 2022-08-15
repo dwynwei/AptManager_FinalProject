@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Controllers
 {
+     /*
+      * Authentication Controller Api Layer
+      */
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase

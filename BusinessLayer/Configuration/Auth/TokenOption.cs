@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Configuration.Auth
 {
+    /*
+     * JWT Token Options Model
+     */
     public class TokenOption
     {
         public string Audience { get; set; }

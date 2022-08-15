@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Cache.Concrete
 {
+    /*
+     * Redis Cache Manager Methods
+     */
     public class RedisCacheManager : ICacheManager
     {
         private readonly RedisEndpoint _endpoint;

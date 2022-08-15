@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Configuration.Validator.UserRequest
 {
+    /*
+     * Fluent Validation Patterns For Each HomeOwner Entity if Needed
+     */
     public class CreateHomeOwnerRequestValidator:AbstractValidator<CreateHomeOwnerRequest>
     {
         public CreateHomeOwnerRequestValidator()
